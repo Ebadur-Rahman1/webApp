@@ -9,23 +9,41 @@ class Admin extends Migration
     public function up()
     {
         $this->forge->addField([
-            'blog_id' => [
+            'id' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'blog_title' => [
+            'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'blog_description' => [
-                'type' => 'TEXT',
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
                 'null' => true,
             ],
+            'phone' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'null' => true,
+            ],
+            'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'null' => true,
+            ],
+            'user_type' => [
+                'type' => 'ENUM("admin","user")',
+                'constraint' => '100',
+                'default' => 'user',
+                'null' => true,
+                
+            ],
         ]);
-        $this->forge->addKey('blog_id', true);
-        $this->forge->createTable('blog');
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('admin');
     }
 
     public function down()
